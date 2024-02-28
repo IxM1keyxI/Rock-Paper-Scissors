@@ -24,8 +24,12 @@ console.log(computerSelection)
 
 // playerSelection as input from player
 
+function getHumanChoice(){
+    choice = prompt("Rock Paper or Scissors ? ")
+    return choice
+}
 
-const playerSelection = prompt("Rock Paper or Scissors ? ")
+const playerSelection = getHumanChoice()
 
 console.log(playerSelection)
 
@@ -60,5 +64,21 @@ function playRound(playerSelection, computerSelection) {
     };
 }
 
-console.log(playRound(playerSelection.toLowerCase(),computerSelection));
+let wins = 0
+    function playGame() {
+        const playerSelection = getHumanChoice();
+        const computerSelection = getComputerChoice();
+        console.log("The computer has chosen " + computerSelection);
+        console.log(playRound(playerSelection.toLowerCase(),computerSelection));
+        let result = playRound(playerSelection, computerSelection);
+        console.log(result.substr(0,8))
+        if(result.substr(0,8)==="You Win!"){
+            wins++
+        }
+    }
+    for(let i=0; i<5; i++){
+        playGame()
+    }
+    console.log("You won "+ wins + " times")
+
 
